@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--suppress JSMethodCanBeStatic, JSUnusedGlobalSymbols -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tests</title>
+    <script type="module">
+        import {AbstractTest} from "../AbstractTest.js";
+        import {JSUITester} from "../JSUITester.js";
+        import {Sandman} from "../Sandman.js";
+        import {UIAssertThat} from "../UIAssertThat.js";
+
+        class MyWebAppTest extends AbstractTest {
+
+            header_AppJustLoaded_HasCorrectClass() {
+                let h1 = JSUITester.find('h1');
+                new UIAssertThat(h1).hasClass('any_class1');
+            }
+
+            button_AppJustLoaded_HasCorrectText() {
+                let button = JSUITester.find('button');
+                new UIAssertThat(button).hasText('Do it');
+            }
+
+            moneyInput_AppJustLoaded_ValueIs123() {
+                //This element does not exist
+                let input = JSUITester.find('#moneyInput');
+                new UIAssertThat(input).hasValue('123');
+            }
+
+            timeInput_AppJustLoaded_ValueIs123() {
+                let input = JSUITester.find('#timeInput');
+                new UIAssertThat(input).hasValue('13:45');
+            }
+
+
+            async div_AppJustLoaded_HasCorrectText() {
+                let div = JSUITester.find('#myDivId');
+                await Sandman.waitUntilExists(div);
+                new UIAssertThat(div).hasText('This is a text');
+            }
+
+        }
+
+
+        //Execute the tests
+        // noinspection JSIgnoredPromiseFromCall
+        new JSUITester()
+            .setPathToPageToTest('/java_script_tests/ui/example/MyWebApp.html')
+            .setTestObject(new MyWebAppTest())
+            .startTests();
+
+    </script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Web App</title>
+</head>
+<body>
+<h1 id="myId" class="any_class">My Web App</h1>
+
+<button name="button_name" type="button">Click me</button>
+
+<label for="moneyInput"></label>
+<input type="text" id="moneyInput" value="123">
+
+</body>
+<script>
+    setTimeout(function () {
+        //Add a div element after half a second
+        let html = '<div id="myDivId">This is a text</div>';
+        document.body.insertAdjacentHTML('beforeend', html);
+    }, 500);
+</script>
+</html>

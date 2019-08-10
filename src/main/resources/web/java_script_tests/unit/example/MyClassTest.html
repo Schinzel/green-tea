@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--suppress JSMethodCanBeStatic, JSUnusedGlobalSymbols -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Unit Tests</title>
+    <script type="module">
+        import {JSUnitTester} from "../JSUnitTester.js";
+        import {UnitAssertThat} from "../UnitAssertThat.js";
+        import {MyClass} from "./MyClass.js";
+
+        class MyClassTest {
+            doubleIt_2_4() {
+                let actual = MyClass.doubleIt(2);
+                new UnitAssertThat(actual).isEqualTo(4);
+            }
+
+            reverseIt_king_gnik() {
+                let actual = MyClass.reverseIt('king');
+                new UnitAssertThat(actual).isEqualTo('gnik');
+            }
+
+            getIt_DefaultValue_DefaultIt() {
+                let actual = new MyClass().getIt();
+                new UnitAssertThat(actual).isEqualTo('Default it');
+            }
+
+            setIt_eagle_eagle() {
+                let actual = new MyClass().setIt('eagle').getIt();
+                new UnitAssertThat(actual).isEqualTo('eagle');
+            }
+        }
+
+        //Execute the tests
+        JSUnitTester.runTests(new MyClassTest());
+    </script>
+</head>
+<body>
+</body>
+</html>
