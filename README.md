@@ -33,7 +33,7 @@ syntax that is well known to many developers
 # Unit Tests
 The unit tests simply solves the problems of having unit tests for JavaScrips classes.
 
-# Creating a test
+# Creating a Test
 1. Create an empty HTML file which will hold the tests
 2. Import classes
     * For UI tests: `JavaScriptUITester` and `UIAssertThat`
@@ -43,6 +43,15 @@ The unit tests simply solves the problems of having unit tests for JavaScrips cl
 4. Add the test class to `JavaScriptUITester` or `JavaScriptUnitTester`. See example files for syntax.
 5. Load your HTML file in a browser
     
+# Special Methods
+The following methods are assumed not to be tests and will not be run as tests:
+- the constructor
+- `beforeTests` and `beforeEachTest`
+- methods that start with underscore
+
+Code in the optional method `beforeTests` will run once before any tests is run.
+
+Code in the optional method `beforeEachTest` will run before every test method. 
 
 ### Note 
 jQuery 2.2.4 is used as to have access to the selector property that has been removed from later
